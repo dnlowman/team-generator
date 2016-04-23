@@ -6,7 +6,7 @@ import TeamGeneratorContainer from './TeamGeneratorContainer';
 const HomeView = (props) => {
     return (
         <div className="ui padded grid">
-            <div className="ui four wide column">
+            <div className="ui column">
                 <TeamGeneratorContainer />
             </div>
         </div>

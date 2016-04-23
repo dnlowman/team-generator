@@ -1,39 +1,41 @@
 import React from 'react';
 
+import AddPlayerFormContainer from './AddPlayerFormContainer';
+import PlayerCardContainer from './PlayerCardContainer';
+import TeamCard from './TeamCard';
+
+import './style.scss';
+
 const TeamGenerator = ({ players, teams, onPlayerNameChange, onAddClick, onGenerateTeamsClick }) => {
-    let playersList = players.map(player => <li key={player}>{player}</li>);
+    let playersList = players.map((player, idx) => <PlayerCardContainer key={idx} playerId={idx} />);
 
-    let teamA = teams[0] || [];
-    let teamB = teams[1] || [];
+    let teamA = teams[0];
+    let teamB = teams[1];
 
-    let teamAList = teamA.map(teamMember => <li key={teamMember}>{teamMember}</li>);
-    let teamBList = teamB.map(teamMember => <li key={teamMember}>{teamMember}</li>);
+    let teamACard = teamA.length > 0 ? <TeamCard players={teamA} /> : '';
+    let teamBCard = teamB.length > 0 ? <TeamCard players={teamB} /> : '';
 
     return (
-        <div>
-            <form className="ui form">
-                <div className="ui action input field">
-                    <input type="text" placeholder="Enter a player name" onChange={(event) => onPlayerNameChange(event.target.value)} />
-                    <button className="ui teal labeled icon button" type="button" onClick={onAddClick}>
-                        <i className="user icon"></i>
-                        Add
-                    </button>
+        <div className="ui grid">
+            <div className="ui row">
+                <div className="ui column">
+                    <AddPlayerFormContainer />
                 </div>
-                <button className="ui green button" type="button" onClick={onGenerateTeamsClick}>Generate Teams</button>
-                <button className="ui red button" type="button" onClick={onGenerateTeamsClick}>Reset</button>
-            </form>
-            <ul>
-                {playersList}
-            </ul>
-            <div>
-                <h3>Team A:</h3>
-                <ul>
-                    {teamAList}
-                </ul>
-                <h3>Team B:</h3>
-                <ul>
-                    {teamBList}
-                </ul>
+            </div>
+            <div className="ui row">
+                <div className="ui column">
+                    <div className="ui cards">
+                        {playersList}
+                    </div>
+                </div>
+            </div>
+            <div className="ui row">
+                <div className="ui column">
+                    <div className="ui cards">
+                        {teamACard}
+                        {teamBCard}
+                    </div>
+                </div>
             </div>
         </div>
     );

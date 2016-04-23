@@ -43,3 +43,18 @@ export function updatePlayerName(name) {
         }
     };
 }
+
+export function removePlayer(playerId) {
+    return {
+        type: constants.REMOVE_PLAYER,
+        payload: {
+            playerId
+        }
+    }
+}
+
+export function reset() {
+    return {
+        type: constants.RESET
+    }
+}

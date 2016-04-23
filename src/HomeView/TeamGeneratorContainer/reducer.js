@@ -7,7 +7,7 @@ const initialState = {
         name: ''
     },
     players: [],
-    teams: []
+    teams: [[], []]
 };
 
 export default function(state = initialState, action) {
@@ -35,8 +35,20 @@ export default function(state = initialState, action) {
             teams.push(action.payload.teamB);
 
             return Object.assign({}, state, {
+                players: [],
                 teams: teams
             });
+        }
+
+        case constants.REMOVE_PLAYER: {
+            let players = state.players.filter((player, idx) => idx !== action.payload.playerId);
+            return Object.assign({}, state, {
+                players
+            });
+        }
+
+        case constants.RESET: {
+            return initialState;
         }
 
         default: {
