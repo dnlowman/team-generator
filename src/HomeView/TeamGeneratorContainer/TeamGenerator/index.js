@@ -15,6 +15,17 @@ const TeamGenerator = ({ players, teams, onPlayerNameChange, onAddClick, onGener
     let teamACard = teamA.length > 0 ? <TeamCard players={teamA} /> : '';
     let teamBCard = teamB.length > 0 ? <TeamCard players={teamB} /> : '';
 
+    let playersRow = '';
+    if(teamA.length === 0 || teamB.length === 0) {
+        playersRow = (<div className="ui row">
+                          <div className="ui column">
+                              <div className="ui cards">
+                                  {playersList}
+                              </div>
+                          </div>
+                      </div>);
+    }
+
     return (
         <div className="ui grid">
             <div className="ui row">
@@ -22,13 +33,7 @@ const TeamGenerator = ({ players, teams, onPlayerNameChange, onAddClick, onGener
                     <AddPlayerFormContainer />
                 </div>
             </div>
-            <div className="ui row">
-                <div className="ui column">
-                    <div className="ui cards">
-                        {playersList}
-                    </div>
-                </div>
-            </div>
+            {playersRow}
             <div className="ui row">
                 <div className="ui column">
                     <div className="ui cards">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddPlayerForm = ({ onPlayerNameChange, onAddClick, onGenerateTeamsClick, onResetClick }) => {
+const AddPlayerForm = ({ areTeamsGenerated, onPlayerNameChange, onAddClick, onGenerateTeamsClick, onResetClick }) => {
     return(
         <form className="ui form">
             <div className="ui action input field">
@@ -11,7 +11,7 @@ const AddPlayerForm = ({ onPlayerNameChange, onAddClick, onGenerateTeamsClick, o
                 </button>
             </div>
             <div className="ui field">
-                <button className="ui green button" type="button" onClick={onGenerateTeamsClick}>Generate Teams</button>
+                <button className="ui green button" type="button" onClick={onGenerateTeamsClick}>{((areTeamsGenerated) ? 'Re-generate' : 'Generate') + ' Teams'}</button>
                 <button className="ui red button" type="button" onClick={onResetClick}>Reset</button>
             </div>
         </form>

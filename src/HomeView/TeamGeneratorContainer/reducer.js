@@ -35,7 +35,6 @@ export default function(state = initialState, action) {
             teams.push(action.payload.teamB);
 
             return Object.assign({}, state, {
-                players: [],
                 teams: teams
             });
         }

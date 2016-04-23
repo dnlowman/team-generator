@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TeamCard = ({ players }) => {
-    let playerList = players.map(player => <li>{player}</li>);
+    let playerList = players.map((player, idx) => <li key={idx}>{player}</li>);
 
     return (
         <div className="card">

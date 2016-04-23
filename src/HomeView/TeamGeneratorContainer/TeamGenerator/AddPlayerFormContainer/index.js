@@ -5,6 +5,12 @@ import { updatePlayerName, addPlayer, generateTeams, reset } from '../../actionC
 
 import AddPlayerForm from './AddPlayerForm';
 
+function mapStateToProps(state) {
+    return {
+        areTeamsGenerated: (state.teamGenerator.teams !== undefined && (state.teamGenerator.teams[0].length > 0 || state.teamGenerator.teams[1].length > 0))
+    };
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         onPlayerNameChange: (name) => {
@@ -25,4 +31,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(AddPlayerForm);
+export default connect(mapStateToProps, mapDispatchToProps)(AddPlayerForm);
